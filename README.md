@@ -15,10 +15,10 @@ For each random model
 
 TODO
 -----
-- [x] [Preprocess Data](#1)
+- [x] [Preprocess Data]#2
 - [ ] Write working NN class
 - [ ] Integrate Pylearn2/YAML
-- [ ] Write autoencoder class
+- [ ] Write autoencoder class #2
 - [ ] Write stacked autoencoder class
 - [ ] Get stacked autoencoders to work
 - [ ] Get NN/SA class to work with filters
