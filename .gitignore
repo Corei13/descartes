@@ -1,1 +1,4 @@
 data/*.npz
+data/*.csv
+descartes.sublime-project
+descartes.sublime-workspace
