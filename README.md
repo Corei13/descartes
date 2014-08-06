@@ -13,7 +13,7 @@ For each random model
   Update booster
 ```
 
-Todo
+TODO
 -----
 - [x] Preprocess Data
 - [ ] Write working NN class
