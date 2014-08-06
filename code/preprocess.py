@@ -1,15 +1,27 @@
 import os, sys, csv, numpy, zipfile
 
 datadir = '../data'
+missing_value = -999.0
 
-trainfile, testfile, outfile = sys.argv[1:4] if len(sys.argv) == 4 else ('training.zip', 'test.zip', 'data.new.npz')
-filter_mass, filter_jet_zero, filter_jet_one = [1], [4, 5, 6, 12, 22, 23, 24, 25, 26, 27], [4, 5, 6, 12, 25, 26, 27]
+
+trainfile, testfile, outfile = sys.argv[1:4] if len(sys.argv) == 4 else ('training.zip', 'test.zip', 'data.npz')
+filter_mass, filter_jet_zero, filter_jet_one = [0], [4, 5, 6, 12, 22, 23, 24, 25, 26, 27], [4, 5, 6, 12, 25, 26, 27]
 trainX, trainW, trainY, testX = None, None, None, None
 
 fileType = lambda path: path.split('.')[-1]
 getZipFile = lambda path: zipfile.ZipFile(path)
 getCsvFile = lambda zfile: zfile.open(zfile.namelist()[0])
 getCsvReader = lambda path: csv.reader(open(path) if fileType(path) == 'csv' else getCsvFile(getZipFile(path)))
+
+def normalize(X):
+    def func(x):
+        norm = lambda a: (a - a.min()) / max(a.ptp(), 1e-6)
+        missing = (x == missing_value)
+        y = numpy.zeros(x.shape)
+        y[-missing] = norm(x[-missing])
+        y[ missing] = -1.0
+        return y
+    return numpy.apply_along_axis(func, 0, X)
 
 def getData(datafile, dtype):
     path = os.path.join(datadir, datafile)
@@ -32,4 +44,4 @@ print ('processing data files %s and %s ...' % (trainfile, testfile))
 (trainX, trainY, trainW), testX = getData(trainfile, dtype = 'training'), getData(testfile, dtype = 'test')
 print ('saving processed data to %s ...' % outfile)
 numpy.savez_compressed(os.path.join(datadir, outfile),
-    X = numpy.concatenate([trainX, testX]), w = trainW, y = trainY, filters = (filter_mass, filter_jet_zero, filter_jet_one))
+    X = normalize(numpy.concatenate([trainX, testX])), w = trainW, y = trainY, filters = (filter_mass, filter_jet_zero, filter_jet_one))
