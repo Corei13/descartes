@@ -15,7 +15,7 @@ For each random model
 
 TODO
 -----
-- [x] Preprocess Data
+- [x] [Preprocess Data](#1)
 - [ ] Write working NN class
 - [ ] Integrate Pylearn2/YAML
 - [ ] Write autoencoder class
