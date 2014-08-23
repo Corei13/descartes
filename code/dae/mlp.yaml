@@ -28,11 +28,11 @@
                 ],
         nvis: 32
     },
-    algorithm: !obj:pylearn2.training_algorithms.sgd.SGD {
-        learning_rate: .1,
-        learning_rule: !obj:pylearn2.training_algorithms.learning_rule.Momentum {
-            init_momentum: .5,
-        },
+    algorithm: !obj:pylearn2.training_algorithms.bgd.BGD {
+        # learning_rate: .1,
+        # learning_rule: !obj:pylearn2.training_algorithms.learning_rule.Momentum {
+        #     init_momentum: .5,
+        # },
         monitoring_dataset:
             {
                 'valid' : !obj:higgsdataset.HiggsDataset {
@@ -56,16 +56,16 @@
                 }
             ]
         },
-        update_callbacks: !obj:pylearn2.training_algorithms.sgd.ExponentialDecay {
-            decay_factor: 1.00004,
-            min_lr: .000001
-        }
+        # update_callbacks: !obj:pylearn2.training_algorithms.sgd.ExponentialDecay {
+        #     decay_factor: 1.00004,
+        #     min_lr: .000001
+        # }
     },
-    extensions: [
-        !obj:pylearn2.training_algorithms.learning_rule.MomentumAdjustor {
-            start: 1,
-            saturate: 250,
-            final_momentum: .7
-        }
-    ]
+    # extensions: [
+    #     !obj:pylearn2.training_algorithms.learning_rule.MomentumAdjustor {
+    #         start: 1,
+    #         saturate: 250,
+    #         final_momentum: .7
+    #     }
+    # ]
 }
