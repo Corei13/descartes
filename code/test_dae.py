@@ -18,7 +18,7 @@ def train_layer1(yaml_file_path, save_path):
                     'batch_size': 50,
                     'monitoring_batches': 1,
                     'nhid': 1000,
-                    'max_epochs': 50}
+                    'max_epochs': 15}
     yaml = yaml % (hyper_params)
     train_yaml(yaml)
 
@@ -31,7 +31,7 @@ def train_layer2(yaml_file_path, save_path):
                     'monitoring_batches': 1,
                     'nvis': 1000,
                     'nhid': 1000,
-                    'max_epochs': 50}
+                    'max_epochs': 15}
     yaml = yaml % (hyper_params)
     train_yaml(yaml)
 
@@ -44,7 +44,7 @@ def train_layer3(yaml_file_path, save_path):
                     'monitoring_batches': 1,
                     'nvis': 1000,
                     'nhid': 1000,
-                    'max_epochs': 50}
+                    'max_epochs': 15}
     yaml = yaml % (hyper_params)
     train_yaml(yaml)
 
