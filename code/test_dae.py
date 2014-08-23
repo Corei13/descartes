@@ -17,7 +17,7 @@ def train_layer1(yaml_file_path, save_path):
     hyper_params = {'train_stop': 800000,
                     'batch_size': 50,
                     'monitoring_batches': 1,
-                    'nhid': 100,
+                    'nhid': 1000,
                     'max_epochs': 100}
     yaml = yaml % (hyper_params)
     train_yaml(yaml)
