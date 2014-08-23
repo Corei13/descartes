@@ -40,6 +40,8 @@
                               start: %(train_stop)i,
                               stop: %(valid_stop)i
                           },
+                'train' : *train
+
             },
         cost: !obj:pylearn2.costs.mlp.Default {},
         termination_criterion: !obj:pylearn2.termination_criteria.And {

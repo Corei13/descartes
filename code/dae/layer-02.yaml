@@ -6,13 +6,13 @@
         },
         transformer: !pkl: "dae_l1.pkl"
     },
-    model: !obj:pylearn2.models.autoencoder.ContractiveAutoencoder {
+    model: !obj:pylearn2.models.autoencoder.DenoisingAutoencoder {
         nvis : %(nvis)i,
         nhid : %(nhid)i,
         irange : 0.05,
-        # corruptor: !obj:pylearn2.corruption.BinomialCorruptor {
-        #     corruption_level: .3,
-        # },
+        corruptor: !obj:pylearn2.corruption.BinomialCorruptor {
+            corruption_level: .3,
+        },
         act_enc: "tanh",
         act_dec: null,    # Linear activation on the decoder side.
     },

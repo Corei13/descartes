@@ -17,7 +17,7 @@ def train_layer1(yaml_file_path, save_path):
     hyper_params = {'train_stop': 800000,
                     'batch_size': 50,
                     'monitoring_batches': None,
-                    'nhid': 500,
+                    'nhid': 25,
                     'max_epochs': 15}
     yaml = yaml % (hyper_params)
     train_yaml(yaml)
@@ -29,9 +29,9 @@ def train_layer2(yaml_file_path, save_path):
     hyper_params = {'train_stop': 800000,
                     'batch_size': 50,
                     'monitoring_batches': None,
-                    'nvis': 500,
-                    'nhid': 500,
-                    'max_epochs': 15}
+                    'nvis': 25,
+                    'nhid': 25,
+                    'max_epochs': 20}
     yaml = yaml % (hyper_params)
     train_yaml(yaml)
 
@@ -42,9 +42,9 @@ def train_layer3(yaml_file_path, save_path):
     hyper_params = {'train_stop': 800000,
                     'batch_size': 50,
                     'monitoring_batches': None,
-                    'nvis': 500,
-                    'nhid': 500,
-                    'max_epochs': 15}
+                    'nvis': 25,
+                    'nhid': 25,
+                    'max_epochs': 50}
     yaml = yaml % (hyper_params)
     train_yaml(yaml)
 
@@ -54,7 +54,7 @@ def train_mlp(yaml_file_path, save_path):
     yaml = open("dae/mlp.yaml".format(yaml_file_path), 'r').read()
     hyper_params = {'train_stop': 200000,
                     'valid_stop': 250000,
-                    'batch_size': 50,
+                    'batch_size': 5,
                     'max_epochs': 100}
     yaml = yaml % (hyper_params)
     train_yaml(yaml)

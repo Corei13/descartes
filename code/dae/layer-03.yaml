@@ -9,15 +9,18 @@
         },
         transformer: !pkl: "dae_l2.pkl"
     },
-    model: !obj:pylearn2.models.autoencoder.ContractiveAutoencoder {
+    model: !obj:pylearn2.models.autoencoder.DenoisingAutoencoder {
         nvis : %(nvis)i,
         nhid : %(nhid)i,
         irange : 0.05,
+        corruptor: !obj:pylearn2.corruption.BinomialCorruptor {
+            corruption_level: .5,
+        },
         act_enc: "tanh",
         act_dec: null,    # Linear activation on the decoder side.
     },
     algorithm: !obj:pylearn2.training_algorithms.sgd.SGD {
-        learning_rate : .05,
+        learning_rate : .1,
         batch_size : %(batch_size)i,
         monitoring_batches : %(monitoring_batches)i,
         monitoring_dataset : *train,
