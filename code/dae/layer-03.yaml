@@ -19,9 +19,10 @@
         act_enc: "tanh",
         act_dec: null,    # Linear activation on the decoder side.
     },
-    algorithm: !obj:pylearn2.training_algorithms.bgd.BGD {
-        # learning_rate : .1,
+    algorithm: !obj:pylearn2.training_algorithms.sgd.SGD {
+        learning_rate : .05,
         batch_size : %(batch_size)i,
+        monitoring_batches : %(monitoring_batches)i,
         monitoring_dataset : *train,
         cost : !obj:pylearn2.costs.autoencoder.MeanSquaredReconstructionError {},
         termination_criterion : !obj:pylearn2.termination_criteria.EpochCounter {
