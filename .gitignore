@@ -1,5 +1,6 @@
-data/*.npz
-data/*.csv
+*.npz
+*.csv
+*.pkl
 descartes.sublime-project
 descartes.sublime-workspace
 *.pyc

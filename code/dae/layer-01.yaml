@@ -3,13 +3,13 @@
         start: 0,
         stop: %(train_stop)i
     },
-    model: !obj:pylearn2.models.autoencoder.DenoisingAutoencoder {
+    model: !obj:pylearn2.models.autoencoder.ContractiveAutoencoder {
         nvis : 32,
         nhid : %(nhid)i,
         irange : 0.05,
-        corruptor: !obj:pylearn2.corruption.BinomialCorruptor {
-            corruption_level: .2,
-        },
+        # corruptor: !obj:pylearn2.corruption.BinomialCorruptor {
+        #     corruption_level: .2,
+        # },
         act_enc: "tanh",
         act_dec: null,    # Linear activation on the decoder side.
     },
