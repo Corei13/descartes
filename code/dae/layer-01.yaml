@@ -14,7 +14,7 @@
         act_dec: null,    # Linear activation on the decoder side.
     },
     algorithm: !obj:pylearn2.training_algorithms.sgd.SGD {
-        learning_rate : .05,
+        learning_rate : .1,
         batch_size : %(batch_size)i,
         monitoring_dataset : *train,
         cost : !obj:pylearn2.costs.autoencoder.MeanSquaredReconstructionError {},

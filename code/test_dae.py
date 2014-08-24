@@ -65,7 +65,7 @@ def test_sda():
 
     train_layer1(yaml_file_path, save_path)
     train_layer2(yaml_file_path, save_path)
-    # train_layer3(yaml_file_path, save_path)
+    train_layer3(yaml_file_path, save_path)
     train_mlp(yaml_file_path, save_path)
 
 if __name__ == '__main__':
